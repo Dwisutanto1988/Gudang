@@ -279,6 +279,14 @@
                             } else {
                                 getShelf();
                             }
+
+
+                            if($('#type').val() == 0){
+                                getTujuan($('#pid').val());
+                            } else {
+                                getTujuan();
+                            }
+
                             enableStockInput();
                         } else {
                             disableStockInput();
@@ -306,7 +314,9 @@
                 product_id:$('#pid').val(),
                 amount:$('#pamount').val(),
                 shelf:$('#shelf').val(),
+                tujuan:$('#tujuan').val(),
                 type:$('#type').val(),
+
             }
 
             $.ajax({
