@@ -42,6 +42,7 @@
                                 <th>{{ __('Amount') }}</th>
                                 <th>{{ __('Shelf Name') }}</th>
                                 <th>{{ __('User') }}</th>
+                                <th>{{ __('Tujuan') }}</th>
                                 <th>{{ __('Date') }}</th>
                                 <th>{{ __('Ending Amount') }}</th>
                             </tr>
@@ -56,13 +57,14 @@
                                         $type = "OUT";
                                     }
                                 @endphp
-                                <tr>
+                                <tr class="text-center {{ ($type == 'IN')? 'text-success':'text-danger' }}" >
                                     <td class="text-center {{ ($type == 'IN')? 'text-success':'text-danger' }} font-weight-bold">{{ $type }}</td>
                                     <td class="text-center">{{ $d->product_code }}</td>
                                     <td>{{ $d->product_name }}</td>
                                     <td class="text-center">{{ $d->product_amount }}</td>
                                     <td class="text-center">{{ $d->shelf_name }}</td>
                                     <td class="text-center">{{ $d->name }}</td>
+                                    <td class="text-center">{{  getData('tujuans','tujuan',$d->tujuan_id) }}</td>
                                     <td class="text-center">{{ date('Y-m-d', strtotime($d->datetime)) }}</td>
                                     <td class="text-center">{{ $d->ending_amount }}</td>
                                 </tr>

@@ -127,7 +127,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div id="tj" class="form-group row">
                                     <label for="tujuan" class="col-sm-4 col-form-label">Tujuan</label>
                                     <div class="col-sm-8">
                                         <select class="form-control select2" style="width: 100%;" id="tujuan" name="tujuan">
@@ -185,9 +185,11 @@
             if(type == 1){
                 $('#modal-title').text("Stock In");
                 $('#button-update').text("Stock In");
+                $("#tj").hide();
             } else {
                 $('#modal-title').text("Stock Out");
                 $('#button-update').text("Stock Out");
+                $("#tj").show();
             }
         }
 
