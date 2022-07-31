@@ -120,13 +120,6 @@
                                         <input type="number" class="form-control" id="pamount" name="pamount" min="1" value="1">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="shelf" class="col-sm-4 col-form-label">Shelf</label>
-                                    <div class="col-sm-8">
-                                        <select class="form-control select2" style="width: 100%;" id="shelf" name="shelf">
-                                        </select>
-                                    </div>
-                                </div>
                                 <div id="tj" class="form-group row">
                                     <label for="tujuan" class="col-sm-4 col-form-label">Tujuan</label>
                                     <div class="col-sm-8">
@@ -134,6 +127,14 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="shelf" class="col-sm-4 col-form-label">Shelf</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control select2" style="width: 100%;" id="shelf" name="shelf">
+                                        </select>
+                                    </div>
+                                </div>
+
                             </form>
                         </div>
                     </div>
@@ -186,6 +187,7 @@
                 $('#modal-title').text("Stock In");
                 $('#button-update').text("Stock In");
                 $("#tj").hide();
+
             } else {
                 $('#modal-title').text("Stock Out");
                 $('#button-update').text("Stock Out");
@@ -312,7 +314,10 @@
             $('#button-check').prop("disabled", true);
             $('#button-update').prop("disabled", true);
             disableStockInput();
-            var data = {
+
+            var data = null ;
+            if($('#type').val() == 0){
+            data = {
                 product_id:$('#pid').val(),
                 amount:$('#pamount').val(),
                 shelf:$('#shelf').val(),
@@ -320,6 +325,18 @@
                 type:$('#type').val(),
 
             }
+
+        } else {
+
+             data = {
+                product_id:$('#pid').val(),
+                amount:$('#pamount').val(),
+                shelf:$('#shelf').val(),
+                tujuan: 'x',
+                type:$('#type').val(),
+
+            }
+        }
 
             $.ajax({
                 url: '/products/stockUpdate',

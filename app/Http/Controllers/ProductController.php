@@ -409,6 +409,10 @@ class ProductController extends Controller
             $result = ['status' => 0, 'message' => 'Amount belum diisi!'];
         }
 
+        if ($tujuan === null) {
+            $result = ['status' => 0, 'message' => 'Tujuan belum diisi!'];
+        }
+
         resp:
         return response()->json($result);
     }
