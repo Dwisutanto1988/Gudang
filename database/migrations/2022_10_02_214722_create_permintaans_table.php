@@ -16,6 +16,7 @@ class CreatePermintaansTable extends Migration
         Schema::create('permintaans', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
+            $table->string('no_permintaan');
             $table->date('tanggal');
             $table->string('wilker');
             $table->bigInteger('product_id');
