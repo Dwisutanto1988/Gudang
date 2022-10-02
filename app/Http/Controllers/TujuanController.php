@@ -65,7 +65,7 @@ class TujuanController extends Controller
     public function edit($id)
     {
         $tujuan = Tujuan::findOrFail($id);
-        return view('Tujuan.edit', compact('tujuan', 'id'));
+        return view('tujuan.edit', compact('tujuan', 'id'));
 
     }
 
