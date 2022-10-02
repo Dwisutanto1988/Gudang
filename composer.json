@@ -15,9 +15,11 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
-        "milon/barcode": "^8.0"
+        "milon/barcode": "^8.0",
+        "orangehill/iseed": "^3.0"
     },
     "require-dev": {
+        "bennett-treptow/laravel-migration-generator": "^4.3",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",

@@ -53,6 +53,15 @@
                     <p class="text">{{ __('Work In Progress') }}</p>
                 </a>
             </li>
+
+            <li class="nav-header">Aplication</li>
+            <li class="nav-item">
+                <a class="nav-link {{ (Route::current()->getName() == 'permintaan')? 'active':''}}" href="{{ route('permintaan.index') }}">
+                    <i class="nav-icon fas fa-boxes"></i>
+                    <p class="text">{{ __('Item Request') }}</p>
+                </a>
+            </li>
+            @if(Auth::user()->role == 0)
             <li class="nav-header">Product</li>
             <li class="nav-item">
                 <a class="nav-link {{ (Route::current()->getName() == 'products')? 'active':''}}" href="{{ route('products') }}">
@@ -66,6 +75,7 @@
                     <p class="text">{{ __('Categories') }}</p>
                 </a>
             </li>
+            @endif
             @if(Auth::user()->role == 0)
             <li class="nav-item">
                 <a class="nav-link {{ (Route::current()->getName() == 'products.shelf')? 'active':''}}" href="{{ route('products.shelf') }}">
