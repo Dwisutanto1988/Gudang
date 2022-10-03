@@ -123,6 +123,10 @@ Route::prefix('users')->group(function () {
 });
 
 Route::resource('permintaan', PermintaanController::class);
+Route::get('/hapus/{id}', [PermintaanController::class, 'destroy2'])->name(
+    'permintaan.hapus'
+);
+
 Route::prefix('account')->group(function () {
     Route::get('', [
         App\Http\Controllers\UserController::class,

@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="/css/adminlte.min.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
    <!-- DataTables -->
   <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -41,6 +43,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             @if(Auth::check())
+            @if(Auth::user()->role == 0)
             <li class="nav-item">
                 <a class="nav-link {{ (Route::current()->getName() == 'home')? 'active':''}}" href="{{ route('home') }}">
                     <i class="nav-icon fas fa-home"></i>
@@ -53,7 +56,7 @@
                     <p class="text">{{ __('Work In Progress') }}</p>
                 </a>
             </li>
-
+           @endif
             <li class="nav-header">Aplication</li>
             <li class="nav-item">
                 <a class="nav-link {{ (Route::current()->getName() == 'permintaan')? 'active':''}}" href="{{ route('permintaan.index') }}">
@@ -155,6 +158,7 @@
 <script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="/plugins/select2/js/select2.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
 <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
  <script>
@@ -237,6 +241,23 @@ $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
       </script>
 
 
+
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+
+  })
+
+
+
+</script>
 
 
 

@@ -273,6 +273,17 @@ if (!function_exists('getData')) {
     }
 }
 
+if (!function_exists('getDataProduct')) {
+    function getDataProduct($table, $name, $id)
+    {
+        $rose = DB::table($table)
+            ->where('product_id', $id)
+            ->first();
+
+        return isset($rose->$name) ? $rose->$name : '-';
+    }
+}
+
 if (!function_exists('getAll')) {
     function getAll($table, $filed, $name, $id)
     {

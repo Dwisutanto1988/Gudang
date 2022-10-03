@@ -19,7 +19,8 @@ class CreatePermintaansTable extends Migration
             $table->string('no_permintaan');
             $table->date('tanggal');
             $table->string('wilker');
-            $table->bigInteger('product_id');
+            $table->bigInteger('product_id')->nullable();
+            $table->bigInteger('qty')->nullable();
             $table->timestamps();
         });
     }
