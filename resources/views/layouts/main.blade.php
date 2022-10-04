@@ -102,6 +102,14 @@
                   <p class="text">{{ __('Users') }}</p>
               </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ (Route::current()->getName() == 'petugas')? 'active':''}}" href="{{ route('petugas.index') }}">
+                    <i class="nav-icon fas fa-user-circle"></i>
+                    <p class="text">{{ __('Petugas') }}</p>
+                </a>
+              </li>
+
             @endif
             <li class="nav-item">
               <a class="nav-link {{ (Route::current()->getName() == 'myaccount')? 'active':''}}" href="{{ route('myaccount') }}">

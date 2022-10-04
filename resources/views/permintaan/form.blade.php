@@ -84,6 +84,7 @@
             <tr class="text-center">
                 <th>No.</th>
                 <th>Tanggal</th>
+                <th>Wilker</th>
                 <th>Product</th>
                 <th>QTY</th>
                 <th>action</th>
@@ -98,6 +99,7 @@
             <tr class="text-center">
                 <td>{{ $no }} </td>
                 <td>{{ ubahTgl($posts->tanggal) }} </td>
+                <td>{{ $posts->wilker }} </td>
                 <td>{{ getDataProduct('products','product_name',$posts->product_id) }} </td>
                 <td>{{ $posts->qty }} </td>
                 <td>

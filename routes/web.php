@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PermintaanController;
 
 /*
@@ -21,6 +23,7 @@ Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name(
     'home'
 );
+
 Route::prefix('products')->group(function () {
     Route::get('', [
         App\Http\Controllers\ProductController::class,
@@ -122,11 +125,6 @@ Route::prefix('users')->group(function () {
         ->middleware('adminRole');
 });
 
-Route::resource('permintaan', PermintaanController::class);
-Route::get('/hapus/{id}', [PermintaanController::class, 'destroy2'])->name(
-    'permintaan.hapus'
-);
-
 Route::prefix('account')->group(function () {
     Route::get('', [
         App\Http\Controllers\UserController::class,
@@ -140,4 +138,12 @@ Route::prefix('account')->group(function () {
         App\Http\Controllers\UserController::class,
         'myaccount_update_password',
     ])->name('myaccount.updatePassword');
+});
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('permintaan', PermintaanController::class);
+    Route::get('/hapus/{id}', [PermintaanController::class, 'destroy2'])->name(
+        'permintaan.hapus'
+    );
+    Route::resource('petugas', PetugasController::class);
 });

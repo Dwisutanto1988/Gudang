@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
+use App\Models\Petugas;
 use App\Models\Permintaan;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StorePermintaanRequest;
 use App\Http\Requests\UpdatePermintaanRequest;
 
@@ -66,7 +68,26 @@ class PermintaanController extends Controller
      */
     public function show($id)
     {
-        dd($id);
+        $petugas = Petugas::first();
+        $data = Permintaan::where('no_permintaan', $id)
+            ->where('user_id', auth()->user()->id)
+            ->get();
+
+        $pdf = PDF::loadView(
+            'permintaan.pdf',
+            compact('data', 'id', 'petugas')
+        )->setPaper('A4', 'potrait');
+        $pdf->getDomPDF()->setHttpContext(
+            stream_context_create([
+                'ssl' => [
+                    'allow_self_signed' => true,
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                ],
+            ])
+        );
+
+        return $pdf->stream(now() . 'request_item.pdf');
     }
 
     /**

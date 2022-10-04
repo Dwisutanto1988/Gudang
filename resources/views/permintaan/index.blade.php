@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', __('Shelf'))
+@section('title', __('Request Item'))
 @section('custom-css')
     <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
 @endsection
@@ -40,14 +40,11 @@
                         action="{{ route('permintaan.hapus', $posts->no_permintaan) }}" method="GET">
                         <a href="{{ url('permintaan/create?no_permintaan='.$posts->no_permintaan) }}"
                             class="btn btn-sm btn-primary">EDIT</a>
-                     <a href="{{ route('permintaan.show',$posts->no_permintaan) }}"
+                     <a target="_blank" href="{{ route('permintaan.show',$posts->no_permintaan) }}"
                                 class="btn btn-sm btn-success">PRINT</a>
                         @csrf
                         <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
                     </form>
-
-
-
                     </td>
 
                 </tr>
