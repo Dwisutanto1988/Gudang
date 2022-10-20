@@ -42,7 +42,7 @@
                         <option value="LAB">LAB</option>
                         <option value="Wilker Palaran">Wilker Palaran</option>
                         <option value="Wilker Pelabuhan">Wilker Pelabuhan</option>
-                        <option value="Wilker Bandar APT">Wilker Bandar APT</option>
+                        <option value="Wilker Bandar APT">Wilker Bandara APT</option>
                         <option value="Wilker Bontang">Wilker Bontang</option>
                     </select>
                     </div>
