@@ -29,10 +29,23 @@
     <div class="pl-lg-4">
         <div class="row">
             <div class="col-lg-6">
-                <div class="form-group focused">
+                {{-- <div class="form-group focused">
                     <label class="form-control-label" for="name">Wilker<span class="small text-danger">*</span></label>
                     {!! Form::text('wilker', null, array('placeholder' => 'wilker','class' => 'form-control','step'=>'any','required')) !!}
-                </div>
+                </div> --}}
+                <div class="form-group">
+                    <label class="form-control-label" for="name">Wilker<span class="small text-danger">*</span></label>
+                    <select class="custom-select" name="wilker" form-control-border" id="exampleSelectBorder" required>
+                        <option value="">Pilih</option>
+                        <option value="Kantor Induk">Kantor Induk</option>
+                        <option value="Admin">Admin</option>
+                        <option value="LAB">LAB</option>
+                        <option value="Wilker Palaran">Wilker Palaran</option>
+                        <option value="Wilker Pelabuhan">Wilker Pelabuhan</option>
+                        <option value="Wilker Bandar APT">Wilker Bandar APT</option>
+                        <option value="Wilker Bontang">Wilker Bontang</option>
+                    </select>
+                    </div>
             </div>
 
         </div>
