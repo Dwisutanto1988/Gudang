@@ -108,6 +108,7 @@
           <td><div align="center">WILKER</div></td>
           <td><div align="center">NAMA BARANG</div></td>
           <td><div align="center">QTY</div></td>
+           <td><div align="center">DISETUJUI</div></td>
         </tr>
         @php
         $no = 1;
@@ -119,6 +120,7 @@
             <td><div align="center">{{ $posts->wilker }} </div></td>
             <td><div align="center">{{ getDataProduct('products','product_name',$posts->product_id) }} </div></td>
             <td><div align="center">{{ $posts->qty }} </div></td>
+            <td><div align="center"></div></td>
         </tr>
         @php
         $no++;
