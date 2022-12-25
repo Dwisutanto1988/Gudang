@@ -130,7 +130,7 @@
 
         <tr>
           <td ><div align="center">PEMOHON</div></td>
-          <td width="200"><div align="center"></div></td>
+          <td width="200"><div align="center">MENYETUJUI</div></td>
           <td><div align="center">PETUGAS </div></td>
         </tr>
         <tr>
@@ -140,7 +140,7 @@
         </tr>
         <tr>
           <td><div align="center">{{ getData('users','name', auth()->user()->id) }}</div></td>
-          <td><div align="center"></div></td>
+          <td><div align="center">.......................</div></td>
           <td><div align="center">{{ $petugas->nama }}</div></td>
         </tr>
       </table>
