@@ -1,110 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Login Inventory</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="/login2/images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/login2/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/login2/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/login2/fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/login2/animate/animate.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/login2/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/login2/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/login2/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/login2/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/login2/css/util.css">
-	<link rel="stylesheet" type="text/css" href="/login2/css/main.css">
-<!--===============================================================================================-->
-</head>
-<body>
+@extends('layouts.main')
+@section('title', __('Login'))
+@section('content')
+<div class="content-header">
+    <div class="container-fluid">
+    <div class="row mb-2">
+    </div>
+    </div>
+</div>
+<section class="content">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
+                                <div class="form-group row">
+                                    <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
 
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
-                    @csrf
-					<span class="login100-form-title p-b-26">
-						Inventory
-					</span>
-					<span class="login100-form-title p-b-48">
-						<i class="zmdi zmdi-file-text"></i>
-					</span>
-
-					<div class="wrap-input100 validate-input" >
-
-                        <input id="username" type="username" class="input100" @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                                    <div class="col-md-6">
+                                        <input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
                                         @error('username')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-						<span class="focus-input100" data-placeholder="Username"></span>
-					</div>
+                                    </div>
+                                </div>
 
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<span class="btn-show-pass">
-							<i class="zmdi zmdi-eye"></i>
-						</span>
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                        <input id="password" type="password" class="input100"  @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <div class="col-md-6">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-						<span class="focus-input100" data-placeholder="Password"></span>
-					</div>
+                                    </div>
+                                </div>
 
-					<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								Login
-							</button>
-						</div>
-					</div>
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-					<div class="text-center p-t-115">
+                                            <label class="form-check-label" for="remember">
+                                                {{ __('Remember Me') }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-8 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Login') }}
+                                        </button>
 
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-
-
-	<div id="dropDownSelect1"></div>
-
-<!--===============================================================================================-->
-	<script src="/login2/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="/login2/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="/login2/bootstrap/js/popper.js"></script>
-	<script src="/login2/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="/login2/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="/login2/daterangepicker/moment.min.js"></script>
-	<script src="/login2/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="/login2/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script src="/login2/js/main.js"></script>
-
-</body>
-</html>
+                                        @if (Route::has('password.request'))
+                                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                {{ __('Forgot Your Password?') }}
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection
