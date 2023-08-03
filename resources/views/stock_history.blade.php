@@ -21,8 +21,8 @@
                 <div class="table-responsive">
 
                     <form >
-                        <button class="btn btn-warning" onClick="window.location.reload();">Cari</button>  <input class="btn btn-danger" type="reset" value="Reset">
-                    <table cellspacing="5" cellpadding="5" border="0">
+                        <button class="btn btn-danger" onClick="window.location.reload();">Reset</button>
+                        <table class="input"  cellspacing="5" cellpadding="5" border="0">
                         <tbody><tr>
                             <td>Minimum date:</td>
                             <td><input type="text" id="min" name="min"></td>
@@ -95,4 +95,61 @@
             $("#sorting").submit();
         });
     </script>
+
+
+<script>
+
+let minDate, maxDate;
+
+ // Custom filtering function which will search data in column four between two values
+
+ $.fn.dataTable.ext.search.push(
+     function( settings, data, dataIndex ) {
+        let min = minDate.val();
+    let max = maxDate.val();
+    let date = new Date(data[7]);
+console.log(date)
+
+
+    // if ( settings.nTable.id !== 'example1' ) {
+    //         return true;
+    //     }
+
+    if (
+        (min === null && max === null) ||
+        (min === null && date <= max) ||
+        (min <= date && max === null) ||
+        (min <= date && date <= max)
+    ) {
+        return true;
+    }
+    return false;
+});
+
+// Create date inputs
+minDate = new DateTime('#min', {
+    format: 'MMMM Do YYYY'
+});
+maxDate = new DateTime('#max', {
+    format: 'MMMM Do YYYY'
+});
+
+
+$(document).ready( function () {
+    var  table1 = $("#example1").DataTable({
+
+"responsive": true, "lengthChange": false, "autoWidth": false,
+"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+
+let  table = $("#example1").DataTable();
+// Refilter the table
+$('#min, #max').on('change', function() {
+        table.draw();
+    });
+});
+
+  </script>
+
 @endsection

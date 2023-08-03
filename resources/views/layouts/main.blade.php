@@ -169,84 +169,10 @@
 <script src="/plugins/select2/js/select2.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
 <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
- <script>
-
-var minDate, maxDate;
-
- // Custom filtering function which will search data in column four between two values
- $.fn.dataTable.ext.search.push(
-     function( settings, data, dataIndex ) {
-         var min = minDate.val();
-         var max = maxDate.val();
-         var date = new Date( data[7] );
-
-         if (
-             ( min === null && max === null ) ||
-             ( min === null && date <= max ) ||
-             ( min <= date   && max === null ) ||
-             ( min <= date   && date <= max )
-         ) {
-             return true;
-         }
-         return false;
-     }
- );
-    $(function () {
-
-          // Create date inputs
-    minDate = new DateTime($('#min'), {
-        format: 'MMMM Do YYYY'
-    });
-    maxDate = new DateTime($('#max'), {
-        format: 'MMMM Do YYYY'
-    });
-
-      var table = $("#example1").DataTable({
-
-        "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
-
-      $('#min, #max').on('change', function () {
-        table.draw();
-   });
-    });
-  </script>
 
 
 
-<script>
 
-$.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
-    var min1 = parseInt($('#min1').val(), 10);
-    var max1 = parseInt($('#max1').val(), 10);
-    var age = parseFloat(data[4]) || 0; // use data for the age column
-
-    if (
-        (isNaN(min1) && isNaN(max1)) ||
-        (isNaN(min1) && age <= max1) ||
-        (min1 <= age && isNaN(max1)) ||
-        (min1 <= age && age <= max1)
-    ) {
-        return true;
-    }
-    return false;
-});
-        $(function () {
-
-            var table = $("#example2").DataTable({
-
-            "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
-
-
-          $('#min1, #max1').keyup(function () {
-        table2.draw();
-    });
-        });
-      </script>
 
 
 

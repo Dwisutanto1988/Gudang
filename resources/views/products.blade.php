@@ -23,8 +23,9 @@
 
                 <div class="table-responsive">
                     <form >
-                        <button class="btn btn-warning" onClick="window.location.reload();">Cari</button>  <input class="btn btn-danger" type="reset" value="Reset">
-                    <table cellspacing="5" cellpadding="5" border="0">
+                        <button class="btn btn-danger" onClick="window.location.reload();">Reset</button>
+                         <!-- <input class="btn btn-danger" type="reset" value="Reset"> -->
+                    <table class="input" cellspacing="5" cellpadding="5" border="0">
                         <tbody><tr>
                             <td>Minimum Amount:</td>
                             <td><input type="number" id="min1" name="min"></td>
@@ -282,6 +283,57 @@
             $('#pcode').text(data.pcode);
         }
     </script>
+
+<script>
+
+const minEl = document.querySelector('#min1');
+const maxEl = document.querySelector('#max1');
+$(document).ready( function () {
+$.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+    let min1 = parseInt($('#min1').val(), 10);
+    let max1 = parseInt($('#max1').val(), 10);
+    let age = parseFloat(data[4]) || 0; // use data for the age column
+
+    if ( settings.nTable.id !== 'example2' ) {
+            return true;
+        }
+
+    if (
+        (isNaN(min1) && isNaN(max1)) ||
+        (isNaN(min1) && age <= max1) ||
+        (min1 <= age && isNaN(max1)) ||
+        (min1 <= age && age <= max1)
+    ) {
+        return true;
+    }
+    return false;
+});
+
+
+
+
+
+      var  table1 = $("#example2").DataTable({
+
+"responsive": true, "lengthChange": false, "autoWidth": false,
+"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+}).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+
+
+var  table = $("#example2").DataTable();
+
+
+
+        minEl.addEventListener('input', function () {
+    table.draw();
+});
+maxEl.addEventListener('input', function () {
+    table.draw();
+});
+
+
+});
+      </script>
     @if(Session::has('success'))
         <script>toastr.success('{!! Session::get("success") !!}');</script>
     @endif
